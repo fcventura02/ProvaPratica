@@ -5,4 +5,6 @@
     <string name="temperatura_c">C°</string>
     <string name="temperatura_f">F°</string>
     <string name="valor_pagar">valor à pagar</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="new_name">Digite um novo nome</string>
 </resources>
