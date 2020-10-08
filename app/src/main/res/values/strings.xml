@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ProvaPratica</string>
+    <string name="voltar">voltar</string>
+    <string name="app_title">Calculadora</string>
+    <string name="temperatura_c">C°</string>
+    <string name="temperatura_f">F°</string>
+    <string name="valor_pagar">valor à pagar</string>
+</resources>
