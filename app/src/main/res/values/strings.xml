@@ -7,4 +7,9 @@
     <string name="valor_pagar">valor à pagar</string>
     <string name="confirmar">Confirmar</string>
     <string name="new_name">Digite um novo nome</string>
+    <string name="_temperatura_inicial">0°</string>
+    <string name="btm_name">digite seu nome</string>
+    <string name="calculadora_de_bolso">Calculadora de bolso</string>
+    <string name="calculadora_de_desconto">Calculadora de desconto</string>
+    <string name="calculadora_de_temperatura">Calculadora de temperatura</string>
 </resources>

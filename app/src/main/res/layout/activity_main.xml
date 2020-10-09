@@ -16,12 +16,12 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btm_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="1"
-            android:text="digite seu nome"
+            android:text="@string/btm_name"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:text="@string/app_title"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button4"
+            app:layout_constraintEnd_toStartOf="@+id/btm_name"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -39,11 +39,11 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/btm_calc_bolso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="192dp"
-        android:text="Calculadora de bolso"
+        android:text="@string/calculadora_de_bolso"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,26 +51,26 @@
         app:layout_constraintVertical_bias="0.016" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/btm_calc_desconto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Calculadora de desconto"
-        app:layout_constraintEnd_toEndOf="@+id/button5"
+        android:text="@string/calculadora_de_desconto"
+        app:layout_constraintEnd_toEndOf="@+id/btm_calc_bolso"
         app:layout_constraintHorizontal_bias="0.518"
-        app:layout_constraintStart_toStartOf="@+id/button5"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
+        app:layout_constraintStart_toStartOf="@+id/btm_calc_bolso"
+        app:layout_constraintTop_toBottomOf="@+id/btm_calc_bolso" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/btm_calc_temperatura"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Calculadora de temperatura"
-        app:layout_constraintEnd_toEndOf="@+id/button6"
+        android:text="@string/calculadora_de_temperatura"
+        app:layout_constraintEnd_toEndOf="@+id/btm_calc_desconto"
         app:layout_constraintHorizontal_bias="0.481"
-        app:layout_constraintStart_toStartOf="@+id/button6"
-        app:layout_constraintTop_toBottomOf="@+id/button6" />
+        app:layout_constraintStart_toStartOf="@+id/btm_calc_desconto"
+        app:layout_constraintTop_toBottomOf="@+id/btm_calc_desconto" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
