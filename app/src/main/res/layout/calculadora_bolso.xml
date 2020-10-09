@@ -8,7 +8,7 @@
     android:padding="16sp">
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/bolso_backPage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/voltar"
@@ -20,29 +20,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_title"
-        app:layout_constraintBottom_toBottomOf="@+id/button8"
+        app:layout_constraintBottom_toBottomOf="@+id/bolso_backPage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button8" />
+        app:layout_constraintTop_toTopOf="@+id/bolso_backPage" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/bolso_exprecao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:text="0"
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button8" />
+        app:layout_constraintTop_toBottomOf="@+id/bolso_backPage" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/bolso_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
         android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+        app:layout_constraintBottom_toBottomOf="@+id/bolso_exprecao"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView5" />
+        app:layout_constraintTop_toTopOf="@+id/bolso_exprecao" />
 
     <TableLayout
         android:layout_width="0sp"
@@ -52,7 +52,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5">
+        app:layout_constraintTop_toBottomOf="@+id/bolso_exprecao">
 
         <TableRow
             android:layout_width="match_parent"
@@ -183,6 +183,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="/"
+                android:textSize="20sp" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="end">
+
+            <Button
+                android:id="@+id/btm_equals"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="="
                 android:textSize="20sp" />
         </TableRow>
 
