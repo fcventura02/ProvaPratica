@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.text.InputType
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
-import kotlinx.android.synthetic.main.calculadora_desconto.*
 import kotlinx.android.synthetic.main.calculadora_temperatura.*
 
 class CalculadoraTemperatura : AppCompatActivity() {

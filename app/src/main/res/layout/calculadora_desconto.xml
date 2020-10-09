@@ -8,7 +8,7 @@
     android:padding="16sp">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/desconto_voltar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/voltar"
@@ -20,52 +20,50 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/app_title"
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
+        app:layout_constraintBottom_toBottomOf="@+id/desconto_voltar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button2" />
+        app:layout_constraintTop_toTopOf="@+id/desconto_voltar" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/value_pay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:ems="10"
         android:hint="@string/valor_pagar"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2"
-        android:importantForAutofill="no"
+        app:layout_constraintTop_toBottomOf="@+id/desconto_voltar"
         tools:ignore="Autofill" />
 
     <EditText
-        android:id="@+id/editTextNumber2"
+        android:id="@+id/value_discount"
         android:layout_width="146dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/valor_desconto"
         android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextNumber"
+        android:autofillHints="true"
+        app:layout_constraintBottom_toBottomOf="@+id/value_pay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/editTextNumber"
-        app:layout_constraintTop_toTopOf="@+id/editTextNumber"
-        app:layout_constraintVertical_bias="0.0"
-        android:importantForAutofill="no"
-        tools:ignore="Autofill" />
+        app:layout_constraintStart_toEndOf="@+id/value_pay"
+        app:layout_constraintTop_toTopOf="@+id/value_pay"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/calcular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        android:text="calcular"
+        android:text="@string/calcular"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/value_pay" />
 
     <TextView
-        android:id="@+id/value_desconto"
+        android:id="@+id/value_result"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/result_value"
@@ -73,19 +71,27 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3" />
+        app:layout_constraintTop_toBottomOf="@+id/calcular" />
 
     <TextView
-        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:text="@string/reais"
         android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="@+id/value_desconto"
-        app:layout_constraintEnd_toStartOf="@+id/value_desconto"
+        app:layout_constraintBottom_toBottomOf="@+id/value_result"
+        app:layout_constraintEnd_toStartOf="@+id/value_result"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/value_desconto" />
+        app:layout_constraintTop_toTopOf="@+id/value_result" />
+
+    <Button
+        android:id="@+id/desconto_limpar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/limpar"
+        app:layout_constraintBottom_toBottomOf="@+id/calcular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/calcular" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

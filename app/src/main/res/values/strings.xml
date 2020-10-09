@@ -13,6 +13,8 @@
     <string name="calculadora_de_desconto">Calculadora de desconto</string>
     <string name="calculadora_de_temperatura">Calculadora de temperatura</string>
     <string name="valor_desconto">valor Desconto</string>
-    <string name="result_value">52</string>
+    <string name="result_value">0</string>
     <string name="reais">R$</string>
+    <string name="limpar">Limpar</string>
+    <string name="calcular">calcular</string>
 </resources>
