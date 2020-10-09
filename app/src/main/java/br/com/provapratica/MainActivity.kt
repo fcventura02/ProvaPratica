@@ -6,9 +6,14 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+    lateinit var title : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        title = intent.getStringExtra("app_title").toString()
+        if (title != "null") {
+            main_app_title.text = title
+        }
 
         btm_name.setOnClickListener {
             nextPage("newname")
@@ -32,6 +37,7 @@ class MainActivity : AppCompatActivity() {
             "calcBolso" -> intent = Intent(this, CalculadoraBolso::class.java)
             else -> intent = Intent(this, NewName::class.java)
         }
+        intent.putExtra("title", main_app_title.text.toString())
         startActivity(intent)
     }
 }

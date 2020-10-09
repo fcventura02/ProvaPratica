@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.InputType
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
+import kotlinx.android.synthetic.main.calculadora_desconto.*
 import kotlinx.android.synthetic.main.calculadora_temperatura.*
 
 class CalculadoraTemperatura : AppCompatActivity() {
@@ -16,7 +17,10 @@ class CalculadoraTemperatura : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.calculadora_temperatura)
-
+        val title = intent.getStringExtra("title")
+        if (title != null) {
+            temperatura_app_title.text = title.toString()
+        }
 
 
         temperatura.setOnClickListener {
@@ -44,6 +48,7 @@ class CalculadoraTemperatura : AppCompatActivity() {
 
     }
 
+    @SuppressLint("SetTextI18n")
     fun dialogInput(){
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Entre cum uma temperatura")
@@ -51,7 +56,7 @@ class CalculadoraTemperatura : AppCompatActivity() {
         val input = EditText(this)
         input.inputType = InputType.TYPE_CLASS_NUMBER
 
-        builder.setView(input);
+        builder.setView(input)
         builder.setPositiveButton("ok") { dialogInterface, i ->
             val value = input.text.toString()
             valuetemperatura = value.toDouble()
