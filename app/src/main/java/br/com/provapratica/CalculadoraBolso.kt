@@ -1,13 +1,16 @@
 package br.com.provapratica
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import kotlinx.android.synthetic.main.calculadora_bolso.*
-import java.time.chrono.JapaneseEra.values
+import net.objecthunter.exp4j.ExpressionBuilder
+import java.lang.Exception
 
 class CalculadoraBolso : AppCompatActivity() {
-    var values : ArrayList<String> = ArrayList()
+    var values: ArrayList<String> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.calculadora_bolso)
@@ -40,53 +43,80 @@ class CalculadoraBolso : AppCompatActivity() {
 
     }
 
+    @SuppressLint("SetTextI18n")
     fun addNumber(number: Number) {
-        //val position = values.size-1
-           if (bolso_exprecao.text == "0") {
-               values.add("$number")
-               bolso_exprecao.text = number.toString()
-           }else{
-               bolso_exprecao.text =  bolso_exprecao.text.toString() + number.toString()
-           }
+        if (bolso_exprecao.text == "0") {
+            values.add("$number")
+            bolso_exprecao.text = number.toString()
+        } else {
+            bolso_exprecao.text = bolso_exprecao.text.toString() + number.toString()
+        }
     }
 
     fun addOperation(string: String) {
+        val value = bolso_exprecao.text.toString()
+        val validate = validateOperator()
         if (bolso_exprecao.text != "0") {
-            when (string) {
-                "+" -> {
-                    values.add("+")
-                    bolso_exprecao.text = bolso_exprecao.text.toString() + "+"
-                }
-                "-" -> {
-                    values.add("-")
-                    bolso_exprecao.text = bolso_exprecao.text.toString() + "-"
+            if (validate) {
+                setOperator(string, value.substring(0, value.length))
+            } else {
+                setOperator(string, value.substring(0, value.length - 1))
+            }
 
+        }
+    }
+
+    fun validateOperator(): Boolean {
+        val indice = bolso_exprecao.text.length - 1
+        val termo = bolso_exprecao.text.get(indice).toString()
+        var result = false
+        if (termo != "+" && termo != "-" && termo != "*" && termo != "/")
+            result = true
+        return result
+    }
+
+    fun setOperator(string: String, value: String) {
+        when (string) {
+            "+" -> {
+                values.add("+")
+                bolso_exprecao.text = ("$value+").toString()
+            }
+            "-" -> {
+                values.add("-")
+                bolso_exprecao.text = ("$value-").toString()
+
+            }
+            "*" -> {
+                values.add("*")
+                bolso_exprecao.text = ("$value*").toString()
+            }
+            "/" -> {
+                values.add("/")
+                bolso_exprecao.text = ("$value/").toString()
+            }
+            "=" -> {
+                try {
+                    val expression = ExpressionBuilder(bolso_exprecao.text.toString()).build()
+                    val result = expression.evaluate()
+                    val longResult = result.toLong()
+                    if (result == longResult.toDouble())
+                        bolso_result.text = longResult.toString()
+                    else
+                        bolso_result.text = result.toString()
+                } catch (e: Exception) {
+                    Log.d("Excepetion", "message: " + e.message)
                 }
-                "*" -> {
-                    values.add("*")
-                    bolso_exprecao.text = bolso_exprecao.text.toString() + "*"
-                }
-                "/" -> {
-                    values.add("/")
-                    bolso_exprecao.text = bolso_exprecao.text.toString() + "/"
-                }
-                "=" -> {
-                    var termos = bolso_exprecao.text.toString().split("+","-","*","/")
-                    var operadores = bolso_exprecao.text.toString().split("9","8","7","6","5","4","3","2","1","0","")
-                    Toast.makeText(
-                        this,
-                        "$termos \n ${operadores}",
-                        Toast.LENGTH_LONG
-                    )
-                        .show()
-                }
-                "ac" -> {
-                    values.clear()
+            }
+            "ac" -> {
+                values.clear()
+                bolso_exprecao.text = "0"
+                bolso_result.text = "0"
+            }
+            else -> {
+                if (bolso_exprecao.text.length > 1)
+                    bolso_exprecao.text = value.substring(0, value.length - 1)
+                else
                     bolso_exprecao.text = "0"
-                    bolso_result.text = "0"
-                }
-                else -> {
-                }
             }
         }
     }
