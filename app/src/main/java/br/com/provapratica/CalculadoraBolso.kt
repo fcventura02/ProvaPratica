@@ -151,7 +151,11 @@ class CalculadoraBolso : AppCompatActivity() {
         }
     }
 
-
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState?.putString("bolso_save_expression", bolso_exprecao.text.toString())
+        outState?.putString("bolso_save", bolso_result.text.toString())
+    }
 
     fun backPage() {
         finish()

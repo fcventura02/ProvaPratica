@@ -3,6 +3,7 @@ package br.com.provapratica
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import kotlinx.android.synthetic.main.calculadora_bolso.*
 import kotlinx.android.synthetic.main.calculadora_desconto.*
 
 class CalculadoraDesconto : AppCompatActivity() {
@@ -34,6 +35,10 @@ class CalculadoraDesconto : AppCompatActivity() {
         desconto_voltar.setOnClickListener {
             backPage()
         }
+
+        if (savedInstanceState != null){
+            value_result.text = savedInstanceState.getString("desconto_save")
+        }
     }
 
     fun calcDesconto(pay: Double, discount: Int): Double {
@@ -57,4 +62,10 @@ class CalculadoraDesconto : AppCompatActivity() {
     fun backPage(){
         finish()
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState?.putString("desconto_save", value_result.text.toString())
+    }
+
 }
