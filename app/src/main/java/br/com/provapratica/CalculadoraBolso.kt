@@ -3,18 +3,25 @@ package br.com.provapratica
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
+import android.preference.PreferenceManager
 import android.util.Log
+import android.widget.Adapter
 import android.widget.Toast
 import kotlinx.android.synthetic.main.calculadora_bolso.*
 import net.objecthunter.exp4j.ExpressionBuilder
 import java.lang.Exception
 
+@Suppress("DEPRECATION")
 class CalculadoraBolso : AppCompatActivity() {
     var values: ArrayList<String> = ArrayList()
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.calculadora_bolso)
-        val title = intent.getStringExtra("title")
+        val mypreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val myEditor = mypreferences.edit()
+        title = mypreferences.getString("save_title", null).toString()
         if (title != null) {
             bolso_app_title.text = title.toString()
         }
@@ -41,6 +48,29 @@ class CalculadoraBolso : AppCompatActivity() {
         btm_div.setOnClickListener { addOperation("/") }
         btm_equals.setOnClickListener { addOperation("=") }
 
+        //save
+        btm_Mclear.setOnClickListener{
+            myEditor.putString("save_result",  null)
+            myEditor.apply()
+        }
+        btm_Msave.setOnClickListener {
+            myEditor.putString("save_result",  bolso_result.text.toString())
+            myEditor.apply()
+        }
+        btm_Msub.setOnClickListener{
+            if (mypreferences.getString("save_result", null) != null){
+                bolso_exprecao.text = bolso_exprecao.text.toString()+ "-" + mypreferences.getString("save_result", null)
+            }
+        }
+        btm_Msum.setOnClickListener{
+            if (savedInstanceState != null){
+                bolso_exprecao.text = bolso_exprecao.text.toString()+ "+" + mypreferences.getString("save_result", null)
+            }
+        }
+        if (savedInstanceState != null){
+            bolso_exprecao.text = savedInstanceState.getString("bolso_save_expression")
+            bolso_result.text = savedInstanceState.getString("bolso_save")
+        }
     }
 
     @SuppressLint("SetTextI18n")
@@ -120,6 +150,8 @@ class CalculadoraBolso : AppCompatActivity() {
             }
         }
     }
+
+
 
     fun backPage() {
         finish()

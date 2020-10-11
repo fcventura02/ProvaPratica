@@ -45,6 +45,10 @@ class CalculadoraTemperatura : AppCompatActivity() {
             }
         }
 
+        btm_voltar.setOnClickListener {
+            finish()
+        }
+
     }
 
     @SuppressLint("SetTextI18n")

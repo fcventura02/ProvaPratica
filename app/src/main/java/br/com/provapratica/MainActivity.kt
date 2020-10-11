@@ -3,14 +3,18 @@ package br.com.provapratica
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.PreferenceManager
 import kotlinx.android.synthetic.main.activity_main.*
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
+  /*  */
     lateinit var title : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        title = intent.getStringExtra("app_title").toString()
+        val mypreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        title = mypreferences.getString("save_title", null).toString()
         if (title != "null") {
             main_app_title.text = title
         }
@@ -37,7 +41,6 @@ class MainActivity : AppCompatActivity() {
             "calcBolso" -> intent = Intent(this, CalculadoraBolso::class.java)
             else -> intent = Intent(this, NewName::class.java)
         }
-        intent.putExtra("title", main_app_title.text.toString())
         startActivity(intent)
     }
 }
